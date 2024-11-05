@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <vector>
 #include <fstream>
 
@@ -22,6 +22,19 @@ void init_map(int a[][SIZE]) {
     }
 }
 
+int minDistance(int dist[], bool sptSet[], int size) {
+    int min = INT_MAX, min_index = -1;
+
+    for (int v = 0; v < size; v++) {
+        if (!sptSet[v] && dist[v] <= min) {
+            min = dist[v];
+            min_index = v;
+        }
+    }
+
+    return min_index;
+}
+
 void printMap(int a[][SIZE]) {
     for (int i = 0; i < SIZE; i++) {
         for (int j = 0; j < SIZE; j++) {
@@ -32,8 +45,8 @@ void printMap(int a[][SIZE]) {
 }
 
 
-void findShortestPath(vector<int> path, int a[][SIZE], int start, int end) {
-
+void dijkstra(vector<int>& path, int a[SIZE][SIZE], int source) {
+    
 }
 
 double computeTotalCost(vector<int> path) {
@@ -50,7 +63,6 @@ void UI() {
     int start, end;
     vector<int> shortestPath;
     cin >> start >> endl;
-    findShortestPath(shortestPath, map, start, end);
     cout << "The shortest path" << shortestPath;
     cout << "The total cost is: " << computeTotalCost();
 }
